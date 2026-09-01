@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Happy Birthday, Komal ❤️</title>
+<meta name="description" content="A little cinematic birthday gift, made just for Komal." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="grain-overlay" aria-hidden="true"></div>
+<div class="vignette-overlay" aria-hidden="true"></div>
+<div id="particle-field" class="particle-field" aria-hidden="true"></div>
+
+<div id="loader" class="loader">
+  <div class="loader-inner">
+    <span class="loader-glow"></span>
+    <svg class="loader-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+      <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" />
+    </svg>
+    <p class="loader-line">Preparing your surprise…</p>
+    <p class="loader-sub">A little magic is on the way ❤</p>
+    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+  </div>
+</div>
+
+<div id="gate" class="gate hidden">
+  <div class="gate-inner">
+    <p class="gate-kicker">A Special Birthday Film</p>
+    <h1 class="gate-title">For <span class="accent">Komal</span></h1>
+    <p class="gate-sub">Put your headphones on, if you like.<br/>This one's better with sound.</p>
+    <button id="start-btn" class="btn btn-primary">
+      <span>Open Your Surprise</span>
+      <span class="btn-icon">🎁</span>
+    </button>
+  </div>
+</div>
+
+<div id="cinema" class="cinema hidden">
+  <div class="letterbox letterbox-top"></div>
+  <div class="letterbox letterbox-bottom"></div>
+  <div class="cinema-card" data-card="1"><p class="cinema-kicker">Presenting</p></div>
+  <div class="cinema-card" data-card="2"><p class="cinema-kicker">A Film By Sai</p></div>
+  <div class="cinema-card" data-card="3">
+    <p class="cinema-kicker">Starring</p>
+    <h2 class="cinema-name">Komal <span class="accent">❤</span></h2>
+    <p class="cinema-role">The Birthday Girl</p>
+  </div>
+  <div class="cinema-card" data-card="4">
+    <p class="cinema-kicker">Genre</p>
+    <p class="cinema-genre">Love • Laughter • Memories • Madness</p>
+  </div>
+  <div class="cinema-card" data-card="5">
+    <p class="cinema-kicker">Special Release</p>
+    <h3 class="cinema-release">Komal's Birthday</h3>
+  </div>
+  <div class="cinema-card cinema-card--final" data-card="6">
+    <p class="cinema-lights">Lights. Camera. Celebrate. 🎬</p>
+  </div>
+</div>
+
+<main id="main" class="main hidden">
+
+  <button id="music-toggle" class="music-toggle" aria-label="Toggle music" aria-pressed="false">
+    <span class="music-toggle-ring"></span>
+    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  </button>
+  <audio id="bg-audio" loop preload="none">
+    <source src="assets/music/komal-birthday-song.mp3" type="audio/mpeg" />
+  </audio>
+
+  <section id="scene-hero" class="scene scene-hero">
+    <p class="scene-tag reveal">Ready for a little surprise?</p>
+    <div class="hero-portrait reveal">
+      <img id="hero-photo" src="assets/images/photo-01.jpg" alt="Komal" onerror="this.closest('.hero-portrait').classList.add('img-missing')" />
+      <span class="portrait-glow"></span>
+      <span class="portrait-frame-label">Add photo‑01.jpg</span>
+    </div>
+    <h1 class="hero-title reveal">Hello, <span class="accent">Komal</span> ❤️</h1>
+    <p class="hero-sub reveal">Sai made something for you.</p>
+    <div class="scroll-hint reveal"><span></span> scroll down to see</div>
+  </section>
+
+  <section id="scene-envelope" class="scene scene-envelope">
+    <div id="envelope" class="envelope">
+      <div class="envelope-flap"></div>
+      <div class="envelope-body">
+        <span class="envelope-heart">💌</span>
+      </div>
+      <div class="envelope-letter" id="envelope-letter">
+        <p class="letter-open" id="letter-heading">Dear Komal ❤️</p>
+        <p id="letter-body" class="letter-body"></p>
+        <p class="letter-sign" id="letter-sign">— Sai</p>
+      </div>
+    </div>
+    <p id="envelope-hint" class="envelope-hint">tap to open 💗</p>
+  </section>
+
+  <!-- ============================================================
+       SCROLL-SCRUBBED SCENES. Each is a 320vh wrapper; the inner
+       stage stays pinned while she scrolls, and the video frame
+       tracks scroll position exactly (bindVideoScrollScene in
+       js/script.js). To add/replace a scene, drop the mp4 into
+       assets/video/ using the filename already referenced below —
+       nothing else needs to change.
+  ============================================================ -->
+
+  <section id="kneel-wrapper" class="scroll-scene" data-scene="kneel">
+    <div class="scroll-scene-sticky">
+      <p class="scroll-caption cap-open" data-cap="1">Happy Birthday, Komal 💕</p>
+      <p class="scroll-caption cap-mid" data-cap="2">For the one who makes<br/>my world beautiful.</p>
+      <div class="video-stage" data-stage>
+        <video class="scrub-video" muted playsinline preload="none">
+          <source src="assets/video/kneel-scene.mp4" type="video/mp4" />
+        </video>
+        <div class="video-fallback">
+          <span class="video-fallback-icon">💐</span>
+          <p>Add your animation at<br/><code>assets/video/kneel-scene.mp4</code></p>
+        </div>
+      </div>
+      <p class="scroll-caption cap-close" data-cap="3">The Reason I Celebrate</p>
+    </div>
+  </section>
+
+  <section id="redcarpet-wrapper" class="scroll-scene" data-scene="redcarpet">
+    <div class="scroll-scene-sticky">
+      <p class="scroll-caption cap-open" data-cap="1"></p>
+      <p class="scroll-caption cap-mid" data-cap="2">Kehte hain…<br/>&ldquo;Kisi cheez ko shiddat se chaho, toh poori kaynaat use tumse milane ki koshish mein lag jaati hai.&rdquo;</p>
+      <div class="video-stage" data-stage>
+        <video class="scrub-video" muted playsinline preload="none">
+          <source src="assets/video/redcarpet-scene.mp4" type="video/mp4" />
+        </video>
+        <div class="video-fallback">
+          <span class="video-fallback-icon">🌟</span>
+          <p>Add your animation at<br/><code>assets/video/redcarpet-scene.mp4</code></p>
+        </div>
+      </div>
+      <p class="scroll-caption cap-close" data-cap="3"></p>
+    </div>
+  </section>
+
+  <section id="field-wrapper" class="scroll-scene" data-scene="field">
+    <div class="scroll-scene-sticky">
+      <p class="scroll-caption cap-open" data-cap="1"></p>
+      <p class="scroll-caption cap-mid" data-cap="2">Aur jab woh mil jaaye…<br/>toh har ek pal khoobsurat ban jaata hai.</p>
+      <div class="video-stage" data-stage>
+        <video class="scrub-video" muted playsinline preload="none">
+          <source src="assets/video/field-scene.mp4" type="video/mp4" />
+        </video>
+        <div class="video-fallback">
+          <span class="video-fallback-icon">🌼</span>
+          <p>Add your animation at<br/><code>assets/video/field-scene.mp4</code></p>
+        </div>
+      </div>
+      <p class="scroll-caption cap-close" data-cap="3"></p>
+    </div>
+  </section>
+
+  <section id="ride-wrapper" class="scroll-scene" data-scene="ride">
+    <div class="scroll-scene-sticky">
+      <p class="scroll-caption cap-open" data-cap="1"></p>
+      <p class="scroll-caption cap-mid" data-cap="2">Jaise mujhe tum mil gayi.</p>
+      <div class="video-stage" data-stage>
+        <video class="scrub-video" muted playsinline preload="none">
+          <source src="assets/video/ride-scene.mp4" type="video/mp4" />
+        </video>
+        <div class="video-fallback">
+          <span class="video-fallback-icon">🏍️</span>
+          <p>Add your animation at<br/><code>assets/video/ride-scene.mp4</code></p>
+        </div>
+      </div>
+      <p class="scroll-caption cap-close" data-cap="3"></p>
+    </div>
+  </section>
+
+  <section id="campfire-wrapper" class="scroll-scene" data-scene="campfire">
+    <div class="scroll-scene-sticky">
+      <p class="scroll-caption cap-open" data-cap="1"></p>
+      <p class="scroll-caption cap-mid" data-cap="2">In a world full of noise…<br/>you are my sukoon.</p>
+      <div class="video-stage" data-stage>
+        <video class="scrub-video" muted playsinline preload="none">
+          <source src="assets/video/campfire-scene.mp4" type="video/mp4" />
+        </video>
+        <div class="video-fallback">
+          <span class="video-fallback-icon">🎸</span>
+          <p>Add your animation at<br/><code>assets/video/campfire-scene.mp4</code></p>
+        </div>
+      </div>
+      <p class="scroll-caption cap-close" data-cap="3"></p>
+    </div>
+  </section>
+
+  <section id="rain-wrapper" class="scroll-scene" data-scene="rain">
+    <div class="scroll-scene-sticky">
+      <p class="scroll-caption cap-open" data-cap="1"></p>
+      <p class="scroll-caption cap-mid" data-cap="2">You are the home my heart<br/>was always searching for. ❤️</p>
+      <div class="video-stage" data-stage>
+        <video class="scrub-video" muted playsinline preload="none">
+          <source src="assets/video/rain-scene.mp4" type="video/mp4" />
+        </video>
+        <div class="video-fallback">
+          <span class="video-fallback-icon">🌧️</span>
+          <p>Add your animation at<br/><code>assets/video/rain-scene.mp4</code></p>
+        </div>
+      </div>
+      <p class="scroll-caption cap-close" data-cap="3"></p>
+    </div>
+  </section>
+
+  <section id="scene-polaroids" class="scene scene-polaroids">
+    <p class="scene-tag reveal">Our Favourite Scenes</p>
+    <h2 class="scene-heading reveal">Every love story has a favourite character.</h2>
+    <p class="scene-heading-sub reveal">Mine has you, in every frame.</p>
+    <div class="polaroid-stack" id="polaroid-stack"></div>
+  </section>
+
+  <section id="dance-wrapper" class="scroll-scene" data-scene="dance">
+    <div class="scroll-scene-sticky">
+      <p class="scroll-caption cap-open" data-cap="1">Hold My Hand.</p>
+      <p class="scroll-caption cap-mid" data-cap="2">Never Let Go.</p>
+      <div class="video-stage" data-stage>
+        <video class="scrub-video" muted playsinline preload="none">
+          <source src="assets/video/dance-scene.mp4" type="video/mp4" />
+        </video>
+        <div class="video-fallback">
+          <span class="video-fallback-icon">💃🕺</span>
+          <p>Add your animation at<br/><code>assets/video/dance-scene.mp4</code></p>
+        </div>
+      </div>
+      <p class="scroll-caption cap-close" data-cap="3">Here's To A Hundred More Birthdays,<br/>And Every Dance In Between.</p>
+    </div>
+  </section>
+
+  <section id="scene-chocolate" class="scene scene-chocolate">
+    <p class="sweet-line reveal">🍯 You're the sweetest part of my life.</p>
+    <p class="sweet-line sweet-line--sub reveal">And I wanted to make your birthday just a little sweeter.</p>
+    <button id="chocolate-btn" class="btn btn-secondary reveal">
+      <span>Tap here for a surprise</span>
+      <span class="btn-icon">✨</span>
+    </button>
+    <p id="dialogue-text" class="dialogue-text"></p>
+    <div id="chocolate-shower" class="chocolate-shower" aria-hidden="true"></div>
+  </section>
+
+  <section id="scene-scratch" class="scene scene-scratch">
+    <p class="scene-tag reveal">✨ One Last Surprise Awaits… ✨</p>
+    <div class="scratch-card">
+      <div class="scratch-reveal" id="scratch-reveal">
+        <p class="jackpot-trophy">🏆</p>
+        <p class="jackpot-title" id="jackpot-title">JACKPOT!</p>
+        <p class="jackpot-sub" id="jackpot-sub">Congratulations!</p>
+        <p class="jackpot-won">YOU WON…</p>
+        <p class="jackpot-heart">❤️</p>
+        <p class="jackpot-prize" id="jackpot-prize">My Heart</p>
+        <p class="jackpot-heart">❤️</p>
+        <hr class="jackpot-rule" />
+        <p class="jackpot-footer" id="jackpot-footer"></p>
+      </div>
+      <canvas id="scratch-canvas" class="scratch-canvas" aria-label="Scratch card, drag to reveal"></canvas>
+    </div>
+    <p class="scratch-label">scratch to reveal</p>
+  </section>
+
+  <section id="scene-finale" class="scene scene-finale">
+    <canvas id="confetti-canvas" class="confetti-canvas" aria-hidden="true"></canvas>
+    <p class="finale-pre reveal">And the story continues…</p>
+    <h2 class="finale-title reveal">Happy Birthday, <span class="accent">Komal</span> ❤️</h2>
+    <p class="finale-message reveal" id="finale-message"></p>
+    <p class="finale-credits reveal">To be continued… 🎬</p>
+    <p class="finale-signature reveal">Made with ❤️ by <span id="finale-sender">Sai</span></p>
+  </section>
+
+</main>
+
+<script src="js/script.js"></script>
+</body>
+</html>
